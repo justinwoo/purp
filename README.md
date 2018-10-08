@@ -20,3 +20,9 @@ Available commands:
   bundle                   Bundle the project, with optional main and target path arguments
   make-module              Make a CommonJS module by running bundle first
 ```
+
+## FAQ
+
+### Where do I get "do action on watch files?"
+
+Maybe one is better off using something like <https://github.com/watchexec/watchexec>?
