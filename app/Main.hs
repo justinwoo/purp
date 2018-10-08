@@ -3,6 +3,9 @@
 module Main where
 
 import qualified Data.Maybe as Maybe
+import qualified Data.Text as Text
+import qualified Data.Version as Version
+import qualified Paths_purp as Paths
 import qualified Turtle as T
 
 type ModuleName = T.Text
@@ -12,12 +15,16 @@ data WithMain = WithMain | WithoutMain
 
 -- | Commands that this program handles
 data Command
-  = Build
+  = Version
+  | Build
   | Test
   | Bundle WithMain (Maybe ModuleName) (Maybe TargetPath)
   | MakeModule (Maybe ModuleName) (Maybe TargetPath)
 
 run :: Command -> IO ()
+run Version = do
+  T.echo . T.unsafeTextToLine . Text.pack $ Version.showVersion Paths.version
+
 run Build = do
   let
     cmd = "psc-package build"
@@ -83,7 +90,9 @@ parser
   T.<|> test
   T.<|> bundle
   T.<|> makeModule
+  T.<|> version
   where
+    version = T.subcommand "version" "Print version" $ pure Version
     build = T.subcommand "build" "Build the project" $ pure Build
     test = T.subcommand "test" "Test the project with Test.Main" $ pure Test
     bundle = T.subcommand "bundle" "Bundle the project, with optional main and target path arguments" $ Bundle WithMain
