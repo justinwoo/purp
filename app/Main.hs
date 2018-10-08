@@ -84,9 +84,9 @@ parser
   T.<|> bundle
   T.<|> makeModule
   where
-    build = T.subcommand "build" "Build the project." $ pure Build
-    test = T.subcommand "test" "Test the project with Test.Main." $ pure Test
-    bundle = T.subcommand "bundle" "Bundle the project, with optional main and target path arguments." $ Bundle WithMain
+    build = T.subcommand "build" "Build the project" $ pure Build
+    test = T.subcommand "test" "Test the project with Test.Main" $ pure Test
+    bundle = T.subcommand "bundle" "Bundle the project, with optional main and target path arguments" $ Bundle WithMain
         <$> T.optional (T.optText "main" 'm' "The main module to bundle")
         <*> T.optional (T.optText "to" 't' "The target file path")
     makeModule = T.subcommand "make-module" "Make a CommonJS module by running bundle first" $ MakeModule
