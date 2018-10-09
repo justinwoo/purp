@@ -17,7 +17,7 @@ data WithMain = WithMain | WithoutMain
 data Command
   = Version
   | Build
-  | Test
+  | Test (Maybe ModuleName)
   | Bundle WithMain (Maybe ModuleName) (Maybe TargetPath)
   | MakeModule (Maybe ModuleName) (Maybe TargetPath)
 
@@ -35,12 +35,12 @@ run Build = do
     T.ExitFailure n ->
       T.die $ "Failed to build: " <> T.repr n
 
-run Test = do
+run (Test mModuleName) = do
   let
+    moduleName = Maybe.fromMaybe "Test.Main" mModuleName
     cmd
-       = "psc-package build -- "
-      <> "test/Main.purs"
-      <> "&& node -e 'require(\"./output/Test.Main\").main()'"
+       = "psc-package build -- './test/**/*.purs'"
+      <> "&& node -e 'require(\"./output/" <> moduleName <> "\").main()'"
   code <- T.shell cmd T.empty
   case code of
     T.ExitSuccess ->
@@ -94,7 +94,8 @@ parser
   where
     version = T.subcommand "version" "Print version" $ pure Version
     build = T.subcommand "build" "Build the project" $ pure Build
-    test = T.subcommand "test" "Test the project with Test.Main" $ pure Test
+    test = T.subcommand "test" "Test the project with some module, default Test.Main" $ Test
+        <$> T.optional (T.optText "module" 'm' "The module to target for test")
     bundle = T.subcommand "bundle" "Bundle the project, with optional main and target path arguments" $ Bundle WithMain
         <$> T.optional (T.optText "main" 'm' "The main module to bundle")
         <*> T.optional (T.optText "to" 't' "The target file path")
