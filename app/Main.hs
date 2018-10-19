@@ -69,7 +69,7 @@ run (Bundle withMain mModuleName mTargetPath) = do
 run (MakeModule mModuleName mTargetPath) = do
   let
     (moduleName, targetPath) = prepareBundleDefaults mModuleName mTargetPath
-    cmd = "echo 'module.exports = PS."<> moduleName <> ";' >> " <> targetPath
+    cmd = "echo 'module.exports = PS[\""<> moduleName <> "\"];' >> " <> targetPath
   T.echo "Bundling first..."
   run $ Bundle WithoutMain (Just moduleName) (Just targetPath)
   code <- T.shell cmd T.empty
