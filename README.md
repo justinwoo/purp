@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/justinwoo/purp.svg?branch=master)](https://travis-ci.org/justinwoo/purp)
 
+[![npm](https://img.shields.io/npm/v/purp-bin-simple.svg)](https://www.npmjs.com/package/purp-bin-simple)
+
 Some kind of CLI for building PureScript projects with Psc-Package
 
 ## Features
