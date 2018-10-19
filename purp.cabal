@@ -2,10 +2,10 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: ce29718179cba1dfdb790183b88f9e6753176b27d8af80fdea0add54c147cbd0
+-- hash: 5df3bb876ea10b162b806b567a449413c5e3af8bf1ec4f7be0bd04d3c68c6994
 
 name:           purp
-version:        0.1.0.0
+version:        0.3.0.0
 description:    Please see the README on GitHub at <https://github.com/githubuser/purp#readme>
 homepage:       https://github.com/justinwoo/purp#readme
 bug-reports:    https://github.com/justinwoo/purp/issues
