@@ -6,22 +6,7 @@
 
 Some kind of CLI for building PureScript projects with Psc-Package
 
-## Features
-
-```
-purp
-
-Usage: purp (build | test | bundle | make-module)
-
-Available options:
-  -h,--help                Show this help text
-
-Available commands:
-  build                    Build the project
-  test                     Test the project with Test.Main
-  bundle                   Bundle the project, with optional main and target path arguments
-  make-module              Make a CommonJS module by running bundle first
-```
+See the guide here: <https://purp.readthedocs.io/en/latest/>
 
 ## FAQ
 
