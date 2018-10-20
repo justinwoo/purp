@@ -60,3 +60,7 @@ You can also run tests
 All 2 tests passed! 🎉
 Tests succeeded.
 ```
+
+## Actions on watch
+
+Please use `watchexec`. It works and is simple: <https://github.com/watchexec/watchexec>
