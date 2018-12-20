@@ -14,7 +14,7 @@
 sudo: false
 
 # Do not choose a language; we provide our own build tools.
-language: generic
+language: nix
 
 # Caching so the next build will be fast too.
 cache:
@@ -139,6 +139,13 @@ script:
       ;;
   esac
   set +ex
+- |
+  # test
+  if [[ $TRAVIS_OS_NAME == "linux" ]]; then
+    stack install
+    cd test/project
+    make
+  fi
 before_deploy:
   - ./script/prepare-tar.pl
 deploy:
