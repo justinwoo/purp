@@ -19,7 +19,7 @@ pkgs.stdenv.mkDerivation {
         pkgs.nix
       ]}
 
-    # mkdir -p $out/etc/bash_completion.d/
-    # cp $src/purp-completion.bash $out/etc/bash_completion.d/purp-completion.bash
+    mkdir -p $out/etc/bash_completion.d/
+    cp $src/purp-completion.bash $out/etc/bash_completion.d/purp-completion.bash
   '';
 }
