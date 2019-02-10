@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-_prefetch-github() {
+_purp() {
     local cur prev opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
@@ -25,4 +25,4 @@ _prefetch-github() {
     esac
 }
 
-complete -F _prefetch-github prefetch-github
+complete -F _purp purp
