@@ -92,7 +92,7 @@ parseBundleArgs lr [] = lr
 
 helpMessage :: String
 helpMessage = "\
-\Usage: purp (build | test | bundle | make-module | version)\n\
+\Usage: purp (build | test | bundle | make-module)\n\
 \\n\
 \Commands:\n\
 \  build [[passthrough args]]\n\
